@@ -1,4 +1,4 @@
-package model;
+package Monopoly21.src.model;
 
 public enum Token {
     BATTLESHIP,
