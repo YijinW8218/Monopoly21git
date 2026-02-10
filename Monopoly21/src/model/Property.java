@@ -1,20 +1,20 @@
 package model;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Map;
 
 public class Property extends LocationToBuy {
     private  int rent;
     private Color colorGroup;
-    private static final Map<Color, Integer> colorCount = Map.of(
-            Color.DARK_GRAY, 2, //Normally is Brown
-            Color.CYAN, 3,
-            Color.PINK, 3,
-            Color.ORANGE,3,
-            Color.RED,3,
-            Color.YELLOW,3,
-            Color.GREEN,3,
-            Color.BLUE,2);
+    public static final Map<Color, Long> colorCount = Map.of(
+            Color.DARK_GRAY, 2L, //Normally is Brown
+            Color.CYAN, 3L,
+            Color.PINK, 3L,
+            Color.ORANGE,3L,
+            Color.RED,3L,
+            Color.YELLOW,3L,
+            Color.GREEN,3L,
+            Color.BLUE,2L);
 
     public  Property(String name, int location, int cost, int rent, Color color){
         super(name, location, cost);
@@ -22,6 +22,7 @@ public class Property extends LocationToBuy {
         this.rent = rent;
         this.colorGroup = color;
     }
+
 
     //Getter and Setter
     public int getRent() {return rent;}

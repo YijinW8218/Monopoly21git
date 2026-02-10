@@ -1,10 +1,8 @@
 package model;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Player {
@@ -101,24 +99,37 @@ public class Player {
             return 0; // dont own the Property
         }
 
-        LocationToBuy property = exists.get();
+        Object property = exists.get();
 
         //Determine the type of Location (Property vs Utility/Railroad)
 
         //if Utility/Railroad -> return getRent()
+        if ( property instanceof Utility) {
+            return ((Utility) property).getRent(utilityCount);
+        } else if (property instanceof Railroad) {
+            return ((Railroad) property).getRent(railroadCount);
+        } else if (property instanceof  Property prop) {
+
+            // Get a map of the owned color groups
+            Map<Color, Long> colorCounts = ownedProperties.stream()
+                    .filter(Property.class::isInstance) //Filter to only look at Property classes
+                    .map(Property.class::cast)          //Create a temp map of just those classes
+                    //Get a count of the color groups
+                    .collect(Collectors.groupingBy(Property::getColorGroup, Collectors.counting()));
+
+            //see if they own all of the properties of a color
+            if (Objects.equals(Property.colorCount.get(prop.getColorGroup()),
+                    colorCounts.get(prop.getColorGroup()))){
+                //if so -> rent is doubled
+                return prop.getRent() * 2;
+            }else {
+                //else -> return rent
+                return prop.getRent();
+            }
+        }
 
         // else determine rent
 
-        // Get a map of the owned color groups
-        Map<Color, Long> colorCounts = ownedProperties.stream()
-                .filter(Property.class::isInstance) //Filter to only look at Property classes
-                .map(Property.class::cast)          //Create a temp map of just those classes
-                //Get a count of the color groups
-                .collect(Collectors.groupingBy(Property::getColorGroup, Collectors.counting()));
-
-        //see if they own all of the properties of a color
-        //if so -> rent is doubled
-        //else -> return rent
 
         return 0;
     }
