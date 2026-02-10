@@ -1,4 +1,4 @@
-package model;
+package Monopoly21.src.model;
 
 public class LocationToBuy {
     protected int cost;
