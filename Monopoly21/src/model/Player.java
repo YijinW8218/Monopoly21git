@@ -1,4 +1,4 @@
-package model;
+package Monopoly21.src.model;
 
 import java.awt.*;
 import java.util.*;
@@ -32,7 +32,6 @@ public class Player {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -40,7 +39,6 @@ public class Player {
     public Token getToken() {
         return token;
     }
-
     public void setToken(Token token) {
         this.token = token;
     }
@@ -48,7 +46,6 @@ public class Player {
     public double getBalance() {
         return balance;
     }
-
     public void setBalance(double balance) {
         this.balance = balance;
     }
@@ -56,7 +53,6 @@ public class Player {
     public boolean isBanker() {
         return isBanker;
     }
-
     public void setBanker(boolean banker) {
         isBanker = banker;
     }
@@ -64,11 +60,11 @@ public class Player {
     public int getCurrentLocation() {
         return currentLocation;
     }
-
     public void setCurrentLocation(int currentLocation) {
         this.currentLocation = currentLocation;
     }
 
+    public List<LocationToBuy> getOwnedProperties() { return ownedProperties; }
     public void setOwnedProperties(List<LocationToBuy> ownedProperties) {
         this.ownedProperties = ownedProperties;
     }
@@ -76,7 +72,6 @@ public class Player {
     public int getRailroadCount() {
         return railroadCount;
     }
-
     public void setRailroadCount(int railroadCount) {
         this.railroadCount = railroadCount;
     }
@@ -84,7 +79,6 @@ public class Player {
     public int getUtilityCount() {
         return utilityCount;
     }
-
     public void setUtilityCount(int utilityCount) {
         this.utilityCount = utilityCount;
     }

@@ -1,4 +1,4 @@
-package model;
+package Monopoly21.src.model;
 
 public class Railroad extends LocationToBuy{
     private static final int ONE_RR = 25;
